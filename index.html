@@ -1,48 +1,1245 @@
-from pathlib import Path
-html = r'''<!doctype html>
+<!doctype html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>گلددم | پنل مدیریت</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>گلدام | استودیوی دیجیتال و بازار کار فریلنسر</title>
+<meta name="description" content="گلدام: طراحی سایت، اپلیکیشن، برندینگ و سئو با تیم مسئول پروژه؛ و بازار کار برای ثبت پروژه و دریافت پیشنهاد از فریلنسرهای تأییدشده." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
-:root{--bg:#08080a;--panel:#111113;--panel2:#17150f;--line:#2a2416;--text:#eae6da;--muted:#918b7d;--gold:#ffd700;--gold2:#ffe27a;--ok:#52dc9a;--warn:#ffcf5c;--bad:#ff7b7b}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 90% 0,rgba(255,215,0,.09),transparent 25%),var(--bg);color:var(--text);font-family:Tahoma,Arial,sans-serif;font-size:14px}button,input,textarea,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:255px 1fr;min-height:100vh}.side{background:#0e0e10;border-left:1px solid var(--line);padding:18px 12px;position:sticky;top:0;height:100vh}.brand{font-size:22px;font-weight:900;color:var(--gold2);padding:10px 14px 24px;border-bottom:1px solid var(--line)}.brand small{display:block;font-size:11px;color:var(--muted);margin-top:6px}.nav{display:grid;gap:6px;margin-top:16px}.nav button{background:transparent;border:1px solid transparent;border-radius:12px;color:var(--muted);padding:12px;text-align:right}.nav button:hover,.nav button.active{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.22);color:var(--gold2)}main{padding:28px;max-width:1450px;width:100%;margin:auto}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:24px}.top h1{margin:0;font-size:25px}.top p{color:var(--muted);font-size:12px;margin:7px 0}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}.btn{min-height:39px;padding:0 14px;border-radius:11px;border:1px solid #3a3425;color:var(--text);background:#151515;font-weight:bold}.btn:hover{filter:brightness(1.16)}.primary{background:linear-gradient(135deg,var(--gold2),#c79319);color:#201805;border:0}.danger{background:rgba(255,80,80,.1);border-color:rgba(255,100,100,.4);color:#ffd0d0}.card{background:linear-gradient(145deg,#141416,#0f0f11);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 14px 40px rgba(0,0,0,.2)}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,1fr)}.tools{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1.3fr .7fr}.stat small,.muted{color:var(--muted)}.stat b{display:block;color:var(--gold2);font-size:28px;margin:10px 0}.head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:14px}.head h2{font-size:16px;margin:0}.tool{position:relative;min-height:190px}.tool .ico{font-size:28px}.tool h3{margin:12px 0 5px}.tool p{color:var(--muted);line-height:1.8;font-size:12px}.tool .btn{width:100%;margin-top:10px}.list{display:grid;gap:9px}.item{display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);border-radius:12px;padding:12px}.item small{display:block;color:var(--muted);margin-top:4px}.badge{font-size:11px;border-radius:99px;padding:5px 9px;background:rgba(82,220,154,.1);color:var(--ok);border:1px solid rgba(82,220,154,.2)}.hide{display:none!important}.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.72);display:none;align-items:center;justify-content:center;z-index:10;padding:16px}.modal-bg.show{display:flex}.modal{max-width:620px;width:100%;max-height:90vh;overflow:auto;background:#121214;border:1px solid #504426;border-radius:18px;padding:20px}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;color:#cfc8b7}.input,.select,.textarea{width:100%;border:1px solid #39352c;background:#0b0b0c;color:white;border-radius:10px;padding:11px;outline:0}.textarea{min-height:100px;resize:vertical}.input:focus,.textarea:focus,.select:focus{border-color:var(--gold)}table{width:100%;border-collapse:collapse;min-width:600px}th,td{padding:13px;text-align:right;border-bottom:1px solid var(--line);font-size:12px}th{color:var(--muted)}.tablewrap{overflow:auto}.chat{height:350px;overflow:auto;padding:8px;display:grid;align-content:end;gap:10px;background:#0a0a0c;border:1px solid var(--line);border-radius:13px}.msg{padding:10px 13px;border-radius:13px;max-width:78%;line-height:1.7;font-size:12px;background:#1a1810}.msg.me{margin-right:auto;background:linear-gradient(135deg,#d3a02b,#836116);color:#171004}.chatform{display:flex;gap:8px;margin-top:10px}.chatform input{flex:1}.notice{position:fixed;bottom:18px;left:18px;background:#153726;border:1px solid rgba(82,220,154,.35);padding:12px 14px;border-radius:12px;display:none;z-index:20}.notice.show{display:block}.linkcard{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}.linkcard:hover{border-color:var(--gold)}@media(max-width:900px){.app{display:block}.side{position:static;width:100%;height:auto}.nav{grid-template-columns:repeat(3,1fr)}main{padding:16px}.stats,.tools,.two{grid-template-columns:1fr 1fr}}@media(max-width:520px){.stats,.tools,.two{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.nav{grid-template-columns:1fr 1fr}.chatform{flex-wrap:wrap}.chatform .btn{width:100%}}
-</style></head><body>
-<div class="app"><aside class="side"><div class="brand">✦ گلددم <small>پنل مستقل مدیریت دایرکت</small></div><nav class="nav" id="nav">
-<button class="active" data-page="dashboard">◫ داشبورد</button><button data-page="showcase">🛍️ ویترین‌ساز</button><button data-page="automation">⚡ پاسخ هوشمند</button><button data-page="account">◍ حساب من</button><button data-page="orders">❖ سفارش‌ها</button><button data-page="connect">◐ اتصال اینستاگرام</button><button data-page="support">✦ پشتیبانی</button></nav></aside>
-<main><header class="top"><div><h1 id="title">داشبورد</h1><p id="subtitle">مدیریت ابزارها و ارتباط با مخاطبان</p></div><div class="row"><button class="btn" id="backup">⇩ بکاپ</button><button class="btn primary" id="quickRule">＋ پاسخ جدید</button></div></header>
-<section id="dashboard" class="page"><div class="grid stats"><div class="card stat"><small>لیدهای ثبت‌شده</small><b id="leadCount">0</b><small>ذخیره‌شده در مرورگر</small></div><div class="card stat"><small>پاسخ‌های هوشمند</small><b id="ruleCount">0</b><small>قانون فعال</small></div><div class="card stat"><small>محصولات ویترین</small><b id="productCount">0</b><small>آیتم قابل نمایش</small></div><div class="card stat"><small>پیام‌های پشتیبانی</small><b id="messageCount">0</b><small>ثبت‌شده محلی</small></div></div>
-<div class="grid tools" style="margin-top:16px" id="tools"></div>
-<div class="grid two" style="margin-top:16px"><div class="card"><div class="head"><h2>لینک‌های کاربردی</h2></div><div class="list"><a class="item linkcard" target="_blank" href="https://telegram.me/directam"><b>✈️ کانال تلگرام</b><small>telegram.me/directam</small></a><a class="item linkcard" target="_blank" href="https://instagram.com/golddam.co"><b>◍ پیج اینستاگرام</b><small>instagram.com/golddam.co</small></a><a class="item linkcard" target="_blank" href="https://ble.ir/golddam"><b>◐ بله</b><small>ble.ir/golddam</small></a></div></div><div class="card"><div class="head"><h2>وضعیت سیستم</h2></div><div class="list"><div class="item"><span>رابط کاربری</span><span class="badge">فعال</span></div><div class="item"><span>ذخیره‌سازی localStorage</span><span class="badge">فعال</span></div><div class="item"><span>اتصال واقعی Meta API</span><span class="badge" style="color:var(--warn)">نیازمند بک‌اند</span></div></div></div></div></section>
-<section id="showcase" class="page hide"><div class="card"><div class="head"><div><h2>ویترین محصولات</h2><small class="muted">محصول‌ها را اضافه و مدیریت کن</small></div><button class="btn primary" id="addProduct">＋ افزودن محصول</button></div><div class="grid tools" id="products"></div></div></section>
-<section id="automation" class="page hide"><div class="grid two"><div class="card"><div class="head"><div><h2>پاسخ‌های هوشمند</h2><small class="muted">قانون‌های کلیدواژه را اینجا بساز</small></div><button class="btn primary" id="addRule">＋ قانون جدید</button></div><div class="list" id="rules"></div></div><div class="card"><div class="head"><h2>تست پاسخ</h2></div><div class="field"><label>پیام آزمایشی</label><input id="testText" class="input" placeholder="مثلاً قیمت دوره چنده؟"></div><button class="btn primary" id="testRule">اجرای تست</button><div class="item" id="testResult" style="margin-top:14px;color:var(--muted)">نتیجهٔ تست اینجا ظاهر می‌شود.</div></div></div></section>
-<section id="account" class="page hide"><div class="card" style="max-width:700px;margin:auto"><div class="head"><h2>حساب من</h2><span class="badge">✓ تایید شده</span></div><div class="list"><div class="item"><div><b>میلاد طلایی</b><small>شناسه: 258248</small></div><button class="btn" id="loginAccount">ورود به این حساب</button></div><div class="item"><span>اعتبار طلایی: نامحدود</span><b style="color:var(--gold2)">GOLD · LIFETIME</b></div></div><button class="btn primary" id="addAccount" style="width:100%;margin-top:16px">＋ افزودن حساب جدید</button></div></section>
-<section id="orders" class="page hide"><div class="card"><div class="head"><h2>سفارش‌ها</h2><button class="btn primary" id="addOrder">＋ ثبت سفارش</button></div><div class="tablewrap"><table><thead><tr><th>شماره</th><th>مشتری</th><th>مبلغ</th><th>وضعیت</th><th>عملیات</th></tr></thead><tbody id="orderRows"></tbody></table></div></div></section>
-<section id="connect" class="page hide"><div class="card" style="max-width:650px;margin:auto;text-align:center"><div style="font-size:48px">🔒</div><h2>اتصال اینستاگرام</h2><p class="muted" style="line-height:2">اتصال واقعی به اینستاگرام به OAuth رسمی Meta، سرور امن و Webhook نیاز دارد. در این نسخه، دکمه‌ها فرآیند را شبیه‌سازی می‌کنند و دادهٔ ورود دریافت نمی‌شود.</p><div class="row" style="justify-content:center;margin-top:20px"><button class="btn primary" id="connectInstagram">◍ ارتباط با اینستاگرام</button><button class="btn" id="connectFacebook">f اتصال با فیسبوک</button></div><p style="font-size:11px" class="muted">با ادامه، <a href="#" id="privacy" style="color:var(--gold2)">قوانین حریم خصوصی</a> را می‌پذیری.</p></div></section>
-<section id="support" class="page hide"><div class="card" style="max-width:860px;margin:auto"><div class="head"><div><h2>پشتیبانی دایرکتم</h2><small class="muted">آنلاین — پاسخ در کمتر از ۵ دقیقه</small></div><span class="badge">آنلاین</span></div><div class="chat" id="chat"></div><form class="chatform" id="chatForm"><input class="input" id="chatInput" required placeholder="پیامت را بنویس..."><button type="button" class="btn" id="attach">📎 پیوست</button><input type="file" id="fileInput" hidden><button class="btn primary" type="submit">↑ ارسال</button></form></div></section>
-</main></div><div id="modalBg" class="modal-bg"><div class="modal"><div class="head"><h2 id="modalTitle">فرم</h2><button class="btn" id="closeModal">×</button></div><div id="modalBody"></div></div></div><div class="notice" id="notice"></div>
-<script>
-const KEY='golddam_working_v1'; const seed={products:[{id:1,title:'دوره فروش در دایرکت',price:'۱,۹۹۰,۰۰۰ تومان',desc:'آموزش تبدیل دایرکت به فروش',icon:'🎓'}],rules:[{id:1,name:'ارسال قیمت',keys:'قیمت,هزینه,تعرفه',reply:'سلام. قیمت و جزئیات کامل به‌زودی برای شما ارسال می‌شود.',enabled:true}],orders:[{id:'GD-1001',customer:'سارا احمدی',amount:'۱,۹۹۰,۰۰۰ تومان',status:'پرداخت شده'}],messages:[{from:'support',text:'سلام میلاد. چطور می‌توانیم کمک کنیم؟'}]};
-let db; try{db=JSON.parse(localStorage.getItem(KEY))||structuredClone(seed)}catch{db=structuredClone(seed)}; const $=s=>document.querySelector(s); const esc=s=>String(s||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
-function save(){localStorage.setItem(KEY,JSON.stringify(db))} function note(t){$('#notice').textContent=t;$('#notice').classList.add('show');setTimeout(()=>$('#notice').classList.remove('show'),3200)}
-const pages={dashboard:['داشبورد','مدیریت ابزارها و ارتباط با مخاطبان'],showcase:['ویترین‌ساز','محصولات و خدمات قابل نمایش'],automation:['پاسخ هوشمند','ساخت و تست قانون‌های کلیدواژه'],account:['حساب من','مدیریت هویت طلایی شما'],orders:['سفارش‌ها','ثبت و مشاهده سفارش‌ها'],connect:['اتصال اینستاگرام','اتصال امن از مسیر رسمی Meta'],support:['پشتیبانی','ارسال و ثبت درخواست پشتیبانی']};
-function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.add('hide'));$('#'+id).classList.remove('hide');document.querySelectorAll('[data-page]').forEach(x=>x.classList.toggle('active',x.dataset.page===id));$('#title').textContent=pages[id][0];$('#subtitle').textContent=pages[id][1];location.hash=id}
-function render(){ $('#leadCount').textContent=db.messages.filter(x=>x.from==='me').length; $('#ruleCount').textContent=db.rules.filter(x=>x.enabled).length; $('#productCount').textContent=db.products.length; $('#messageCount').textContent=db.messages.length;
- $('#tools').innerHTML=[['🛍️','ویترین‌ساز','محصولات و خدمات خودت را مدیریت کن','showcase'],['⚡','پاسخ هوشمند','قانون کلیدواژه و پاسخ خودکار بساز','automation'],['✦','پشتیبانی','پیام پشتیبانی ثبت و ارسال کن','support'],['◐','اتصال اینستاگرام','وضعیت اتصال و راهنمای رسمی','connect'],['❖','سفارش‌ها','فاکتور و سفارش‌های خودت را ببین','orders'],['◍','حساب من','اطلاعات حساب و اشتراک','account']].map(x=>`<article class="card tool"><div class="ico">${x[0]}</div><h3>${x[1]}</h3><p>${x[2]}</p><button class="btn toolGo" data-go="${x[3]}">ورود به ${x[1]} ←</button></article>`).join('');
- $('#products').innerHTML=db.products.length?db.products.map(p=>`<article class="card tool"><div class="ico">${esc(p.icon)}</div><h3>${esc(p.title)}</h3><p>${esc(p.desc)}</p><b style="color:var(--gold2)">${esc(p.price)}</b><div class="row" style="margin-top:13px"><button class="btn" onclick="editProduct(${p.id})">ویرایش</button><button class="btn danger" onclick="delProduct(${p.id})">حذف</button></div></article>`).join(''):'<p class="muted">هنوز محصولی ثبت نشده است.</p>';
- $('#rules').innerHTML=db.rules.length?db.rules.map(r=>`<div class="item"><div><b>${esc(r.name)}</b><small>کلیدواژه‌ها: ${esc(r.keys)}</small></div><div class="row"><span class="badge" style="color:${r.enabled?'var(--ok)':'var(--warn)'}">${r.enabled?'فعال':'متوقف'}</span><button class="btn" onclick="toggleRule(${r.id})">تغییر وضعیت</button><button class="btn danger" onclick="delRule(${r.id})">حذف</button></div></div>`).join(''):'<p class="muted">قانونی ندارید.</p>';
- $('#orderRows').innerHTML=db.orders.map(o=>`<tr><td>${esc(o.id)}</td><td>${esc(o.customer)}</td><td>${esc(o.amount)}</td><td><span class="badge">${esc(o.status)}</span></td><td><button class="btn" onclick="invoice('${o.id}')">مشاهده فاکتور</button></td></tr>`).join('');
- $('#chat').innerHTML=db.messages.map(m=>`<div class="msg ${m.from==='me'?'me':''}">${esc(m.text)}</div>`).join(''); $('#chat').scrollTop=999999;
-}
-function modal(title,body){$('#modalTitle').textContent=title;$('#modalBody').innerHTML=body;$('#modalBg').classList.add('show')} function close(){ $('#modalBg').classList.remove('show');$('#modalBody').innerHTML=''}
-function productForm(p={}){modal(p.id?'ویرایش محصول':'افزودن محصول',`<form id="pf"><div class="field"><label>نام</label><input class="input" id="pt" required value="${esc(p.title||'')}"></div><div class="field"><label>قیمت</label><input class="input" id="pp" required value="${esc(p.price||'')}"></div><div class="field"><label>آیکون</label><input class="input" id="pi" value="${esc(p.icon||'🛍️')}"></div><div class="field"><label>توضیح</label><textarea class="textarea" id="pd" required>${esc(p.desc||'')}</textarea></div><button class="btn primary">ذخیره</button></form>`);$('#pf').onsubmit=e=>{e.preventDefault();let o={id:p.id||Date.now(),title:$('#pt').value.trim(),price:$('#pp').value.trim(),icon:$('#pi').value.trim(),desc:$('#pd').value.trim()};db.products=p.id?db.products.map(x=>x.id===p.id?o:x):[o,...db.products];save();render();close();note('محصول ذخیره شد.')}}
-function ruleForm(){modal('قانون پاسخ جدید',`<form id="rf"><div class="field"><label>نام قانون</label><input class="input" id="rn" required placeholder="مثلاً ارسال قیمت"></div><div class="field"><label>کلیدواژه‌ها (با ویرگول)</label><input class="input" id="rk" required placeholder="قیمت، هزینه، تعرفه"></div><div class="field"><label>متن پاسخ</label><textarea class="textarea" id="rr" required></textarea></div><button class="btn primary">ذخیره قانون</button></form>`);$('#rf').onsubmit=e=>{e.preventDefault();db.rules.unshift({id:Date.now(),name:$('#rn').value.trim(),keys:$('#rk').value.trim(),reply:$('#rr').value.trim(),enabled:true});save();render();close();note('قانون پاسخ ذخیره شد.')}}
-window.editProduct=id=>productForm(db.products.find(x=>x.id===id));window.delProduct=id=>{if(confirm('این محصول حذف شود؟')){db.products=db.products.filter(x=>x.id!==id);save();render();note('محصول حذف شد.')}};window.delRule=id=>{if(confirm('این قانون حذف شود؟')){db.rules=db.rules.filter(x=>x.id!==id);save();render();note('قانون حذف شد.')}};window.toggleRule=id=>{let x=db.rules.find(x=>x.id===id);x.enabled=!x.enabled;save();render();note('وضعیت قانون تغییر کرد.')};window.invoice=id=>{let o=db.orders.find(x=>x.id===id);modal('فاکتور '+o.id,`<div class="list"><div class="item"><span>مشتری</span><b>${esc(o.customer)}</b></div><div class="item"><span>مبلغ</span><b>${esc(o.amount)}</b></div><div class="item"><span>وضعیت</span><b>${esc(o.status)}</b></div></div><button class="btn primary" style="margin-top:14px" onclick="window.print()">چاپ</button>`)};
-$('#nav').onclick=e=>{let b=e.target.closest('[data-page]');if(b)go(b.dataset.page)};document.addEventListener('click',e=>{let b=e.target.closest('.toolGo');if(b)go(b.dataset.go)});$('#quickRule').onclick=()=>{go('automation');ruleForm()};$('#addProduct').onclick=()=>productForm();$('#addRule').onclick=ruleForm;$('#closeModal').onclick=close;$('#modalBg').onclick=e=>{if(e.target===$('#modalBg'))close()};
-$('#testRule').onclick=()=>{let text=$('#testText').value.trim().toLowerCase();let r=db.rules.find(r=>r.enabled&&r.keys.split(/[،,]/).some(k=>text.includes(k.trim().toLowerCase())));$('#testResult').innerHTML=r?`<div><b style="color:var(--gold2)">قانون منطبق: ${esc(r.name)}</b><small style="display:block;margin-top:6px">${esc(r.reply)}</small></div>`:'هیچ قانون فعالی برای این متن پیدا نشد.'};
-$('#loginAccount').onclick=()=>note('حساب محلی شما فعال است. ورود واقعی نیازمند سامانهٔ احراز هویت است.');$('#addAccount').onclick=()=>note('افزودن حساب در نسخهٔ متصل به بک‌اند فعال می‌شود.');$('#addOrder').onclick=()=>modal('ثبت سفارش',`<form id="of"><div class="field"><label>نام مشتری</label><input id="oc" class="input" required></div><div class="field"><label>مبلغ</label><input id="oa" class="input" required></div><button class="btn primary">ثبت سفارش</button></form>`),setTimeout(()=>{let f=$('#of');if(f)f.onsubmit=e=>{e.preventDefault();db.orders.unshift({id:'GD-'+Date.now().toString().slice(-5),customer:$('#oc').value,amount:$('#oa').value,status:'در انتظار'});save();render();close();note('سفارش ثبت شد.')}},0);
-$('#connectInstagram').onclick=()=>note('برای اتصال واقعی باید OAuth رسمی Meta در بک‌اند راه‌اندازی شود.');$('#connectFacebook').onclick=()=>note('اتصال فیسبوک در این نسخه شبیه‌سازی شد.');$('#privacy').onclick=e=>{e.preventDefault();modal('حریم خصوصی','<p class="muted" style="line-height:2">این نسخه داده‌ها را فقط در localStorage مرورگر ذخیره می‌کند و اطلاعات ورود اینستاگرام دریافت نمی‌کند.</p>')};$('#attach').onclick=()=>$('#fileInput').click();$('#fileInput').onchange=()=>note($('#fileInput').files[0]?'فایل انتخاب شد؛ در نسخهٔ محلی ارسال نمی‌شود.':'');$('#chatForm').onsubmit=e=>{e.preventDefault();let v=$('#chatInput').value.trim();if(!v)return;db.messages.push({from:'me',text:v});$('#chatInput').value='';save();render();setTimeout(()=>{db.messages.push({from:'support',text:'پیام شما ثبت شد. این نسخهٔ محلی است؛ برای پاسخ واقعی باید به سیستم پشتیبانی متصل شود.'});save();render()},500)};$('#backup').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(db,null,2)],{type:'application/json'}));a.download='golddam-backup.json';a.click();URL.revokeObjectURL(a.href);note('فایل بکاپ دانلود شد.')};
-render();go(location.hash.slice(1) in pages?location.hash.slice(1):'dashboard');
-</script></body></html>'''
-out = Path('/mnt/data/golddam-working.html')
-out.write_text(html, encoding='utf-8')
-print(out, len(html))
+  :root{
+    --bg:#fbfaff; --fg:#1b1830; --card:#ffffff; --secondary:#f3f0fb; --muted:#6f6b86;
+    --primary:#6d3ce8; --gold:#f2a11b; --gold-soft:#fdf0d6; --ink:#0f0a1f; --ink-fg:#f7f4ee; --ink-muted:#b3aec4;
+    --border:#e7e3f2; --radius:22px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--fg);font-family:"Vazirmatn",ui-sans-serif,system-ui,sans-serif;line-height:1.9;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  h1,h2,h3{font-weight:800;line-height:1.4;margin:0}
+  p{margin:0}
+  ul{margin:0;padding:0;list-style:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+  .btn{display:inline-flex;align-items:center;gap:.45rem;border-radius:999px;padding:.55rem 1.15rem;font-size:.86rem;font-weight:600;border:1px solid transparent;cursor:pointer;transition:.2s}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-primary:hover{filter:brightness(1.07)}
+  .btn-gold{background:var(--gold);color:#2a1c04}
+  .btn-gold:hover{filter:brightness(1.05)}
+  .btn-outline{background:transparent;border-color:var(--border);color:var(--fg)}
+  .btn-outline:hover{background:var(--secondary)}
+  .btn-ghost-light{border-color:rgba(247,244,238,.3);color:var(--ink-fg)}
+  .btn-ghost-light:hover{background:rgba(247,244,238,.12)}
+  .eyebrow{display:inline-flex;align-items:center;gap:.4rem;border-radius:999px;border:1px solid rgba(242,161,27,.35);background:rgba(242,161,27,.12);color:#f5b64a;padding:.25rem .7rem;font-size:.7rem;font-weight:600}
+
+  /* header */
+  header{position:sticky;top:0;z-index:40}
+  .topbar{background:var(--ink);color:var(--ink-fg);font-size:.7rem}
+  .topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.4rem 18px;color:var(--ink-muted)}
+  .topbar a:hover{color:var(--ink-fg)}
+  .navbar{background:rgba(251,250,255,.88);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+  .navbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 18px}
+  .brand{display:flex;align-items:center;gap:.6rem}
+  .brand .logo{display:grid;place-items:center;width:38px;height:38px;border-radius:14px;background:linear-gradient(140deg,var(--gold),var(--primary));color:#2a1c04;font-size:1rem}
+  .brand b{font-size:1.05rem;letter-spacing:-.01em}
+  .brand span small{display:block;font-size:.62rem;color:var(--muted);font-weight:400}
+  nav.main{display:none;gap:.15rem}
+  nav.main a{padding:.45rem .7rem;border-radius:999px;font-size:.85rem;color:var(--muted)}
+  nav.main a:hover{background:var(--secondary);color:var(--fg)}
+  nav.main a.active{background:var(--secondary);color:var(--fg);font-weight:600}
+  .nav-actions{display:flex;align-items:center;gap:.4rem}
+  .burger{display:grid;place-items:center;width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:#fff;font-size:1rem;cursor:pointer}
+  .mobile-menu{display:none;border-top:1px solid var(--border);background:var(--bg)}
+  .mobile-menu.open{display:block}
+  .mobile-menu .grid{display:grid;grid-template-columns:1fr 1fr;gap:.25rem;padding:.7rem 18px}
+  .mobile-menu a{padding:.6rem .7rem;border-radius:12px;font-size:.85rem;color:var(--muted)}
+  .mobile-menu a:hover{background:var(--secondary);color:var(--fg)}
+  @media(min-width:1000px){nav.main{display:flex}.burger{display:none}.mobile-menu.open{display:none}}
+  @media(max-width:639px){.topbar{display:none}}
+
+  /* hero */
+  .hero{position:relative;overflow:hidden;background:var(--ink);color:var(--ink-fg)}
+  .hero .grid-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(247,244,238,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(247,244,238,.06) 1px,transparent 1px);background-size:56px 56px;opacity:.7}
+  .hero .glow1{position:absolute;right:-90px;top:-90px;width:26rem;height:26rem;background:radial-gradient(circle,rgba(242,161,27,.3),transparent 62%)}
+  .hero .glow2{position:absolute;left:-70px;bottom:-120px;width:24rem;height:24rem;background:radial-gradient(circle,rgba(109,60,232,.36),transparent 62%)}
+  .hero .inner{position:relative;display:grid;gap:2.2rem;padding:2.4rem 18px 3rem}
+  .hero h1{font-size:1.95rem;line-height:1.35;margin-top:1.1rem}
+  .hero h1 .grad{background:linear-gradient(90deg,#f5b64a,#f2a11b,#a586f5);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p.lead{margin-top:.9rem;max-width:34rem;font-size:.92rem;line-height:2;color:var(--ink-muted)}
+  .search{display:flex;align-items:center;gap:.4rem;max-width:34rem;margin-top:1.5rem;border:1px solid rgba(247,244,238,.15);background:rgba(247,244,238,.07);border-radius:999px;padding:6px}
+  .search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink-fg);font:inherit;font-size:.85rem;outline:none;padding:.35rem .3rem}
+  .search input::placeholder{color:rgba(179,174,196,.85)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.4rem}
+  .stats{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:1.7rem}
+  .stats div{display:flex;align-items:baseline;gap:.35rem}
+  .stats dt{font-size:1.25rem;font-weight:800}
+  .stats dd{margin:0;font-size:.72rem;color:var(--ink-muted)}
+  .hero-media{position:relative}
+  .hero-media .frame{border-radius:32px;overflow:hidden;border:1px solid rgba(247,244,238,.15);box-shadow:0 30px 60px rgba(0,0,0,.45)}
+  .hero-media .frame img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .glass{position:absolute;display:flex;align-items:center;gap:.6rem;padding:.6rem .8rem;border-radius:18px;border:1px solid rgba(247,244,238,.16);background:rgba(247,244,238,.08);backdrop-filter:blur(12px);font-size:.72rem}
+  .glass.team{bottom:-18px;right:16px}
+  .glass.check{top:-16px;left:16px;display:none}
+  .glass .avatars{display:flex}
+  .glass .avatars img{width:34px;height:34px;border-radius:50%;object-fit:cover;border:2px solid var(--ink);margin-inline-start:-7px}
+  .glass .avatars img:first-child{margin-inline-start:0}
+  .glass b{display:block;font-size:.72rem}
+  .glass small{color:var(--ink-muted);font-size:.65rem}
+  @media(min-width:1000px){
+    .hero .inner{grid-template-columns:1.05fr .95fr;align-items:center;padding:4.4rem 18px}
+    .hero h1{font-size:3rem}
+    .glass.check{display:flex}
+  }
+
+  /* trust */
+  .trust{border-bottom:1px solid var(--border);background:rgba(255,255,255,.6)}
+  .trust .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;padding:1.4rem 0}
+  .trust .item{display:flex;gap:.6rem}
+  .trust .ico{display:grid;place-items:center;width:32px;height:32px;border-radius:12px;background:var(--gold-soft);color:#8a5600;flex:0 0 auto}
+  .trust b{font-size:.82rem}
+  .trust p{font-size:.72rem;color:var(--muted);line-height:1.9}
+  @media(min-width:1000px){.trust .grid{grid-template-columns:repeat(4,1fr)}}
+
+  section.block{padding:3rem 0}
+  .head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:.8rem;margin-bottom:1.5rem}
+  .head .kick{color:var(--primary);font-size:.7rem;font-weight:700;letter-spacing:.04em}
+  .head h2{font-size:1.5rem;margin-top:.35rem}
+  .head p{margin-top:.5rem;max-width:40rem;font-size:.85rem;color:var(--muted);line-height:2}
+
+  .cards{display:grid;gap:1.1rem}
+  .service{overflow:hidden;border-radius:26px;border:1px solid var(--border);background:var(--card);box-shadow:0 1px 2px rgba(20,15,40,.04);transition:.3s}
+  .service:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(20,15,40,.1)}
+  .service .pic{position:relative;aspect-ratio:4/3;overflow:hidden}
+  .service .pic img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .service:hover .pic img{transform:scale(1.05)}
+  .service .pic .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,10,31,.92),rgba(15,10,31,.25),transparent)}
+  .service .pic .cap{position:absolute;inset-inline:0;bottom:0;padding:.9rem;color:var(--ink-fg)}
+  .service .pic .cap small{color:#f5b64a;font-size:.66rem;font-weight:600}
+  .service .pic .cap h3{font-size:.95rem;margin-top:.2rem;line-height:1.7}
+  .service .foot{display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.85rem 1rem;font-size:.75rem;color:var(--muted)}
+  .service .foot span:last-child{color:var(--primary);font-weight:600}
+  @media(min-width:640px){.cards.two{grid-template-columns:1fr 1fr}.cards.four{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){.cards.three{grid-template-columns:repeat(3,1fr)}.cards.four{grid-template-columns:repeat(4,1fr)}}
+
+  .soft{background:rgba(243,240,251,.55);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-bottom:1.2rem}
+  .chips a{border:1px solid var(--border);background:var(--card);border-radius:999px;padding:.3rem .85rem;font-size:.72rem;color:var(--muted)}
+  .chips a:hover{border-color:rgba(109,60,232,.45);color:var(--fg)}
+
+  .project{border:1px solid var(--border);border-radius:24px;background:var(--card);padding:1.1rem;display:flex;flex-direction:column;gap:.6rem;transition:.2s}
+  .project:hover{border-color:rgba(109,60,232,.45)}
+  .project .top{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+  .tag{border-radius:8px;background:var(--secondary);color:#3d2f6b;padding:.15rem .55rem;font-size:.68rem;font-weight:600}
+  .project .time{font-size:.68rem;color:var(--muted)}
+  .project h3{font-size:.95rem}
+  .project p{font-size:.8rem;color:var(--muted);line-height:1.95;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:1}
+  .project .meta{display:flex;flex-wrap:wrap;gap:.3rem .8rem;font-size:.7rem;color:var(--muted)}
+
+  .step{border:1px solid var(--border);border-radius:26px;background:var(--card);padding:1.1rem;box-shadow:0 1px 2px rgba(20,15,40,.04)}
+  .step .num{display:grid;place-items:center;width:40px;height:40px;border-radius:16px;background:linear-gradient(140deg,var(--primary),var(--gold));color:#fff;font-weight:800;font-size:.85rem}
+  .step h3{font-size:.92rem;margin-top:.7rem}
+  .step p{font-size:.79rem;color:var(--muted);line-height:2;margin-top:.25rem}
+
+  /* dark sections */
+  .dark{position:relative;overflow:hidden;background:var(--ink);color:var(--ink-fg)}
+  .dark .grid-bg{position:absolute;inset:0;background-image:linear-gradient(to right,rgba(247,244,238,.06) 1px,transparent 1px),linear-gradient(to bottom,rgba(247,244,238,.06) 1px,transparent 1px);background-size:56px 56px;opacity:.45}
+  .dark .glow{position:absolute;left:-90px;top:30%;width:20rem;height:20rem;background:radial-gradient(circle,rgba(109,60,232,.36),transparent 62%)}
+  .dark .inner{position:relative;padding:3rem 18px}
+  .dark h2{font-size:1.5rem;margin-top:.7rem}
+  .dark .lead{margin-top:.5rem;max-width:40rem;font-size:.85rem;color:var(--ink-muted);line-height:2}
+  .lesson{position:relative;border:1px solid rgba(247,244,238,.15);background:rgba(247,244,238,.04);border-radius:26px;overflow:hidden;transition:.3s}
+  .lesson:hover{transform:translateY(-4px);border-color:rgba(242,161,27,.4);background:rgba(247,244,238,.08)}
+  .lesson .pic{position:relative;aspect-ratio:16/10;overflow:hidden}
+  .lesson .pic img{width:100%;height:100%;object-fit:cover;opacity:.9}
+  .lesson .pic .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(15,10,31,.9),rgba(15,10,31,.2),transparent)}
+  .lesson .badge{position:absolute;top:.8rem;right:.8rem;background:rgba(15,10,31,.7);border-radius:999px;padding:.15rem .6rem;font-size:.66rem;backdrop-filter:blur(8px)}
+  .lesson .dur{position:absolute;top:.8rem;left:.8rem;background:rgba(15,10,31,.7);border-radius:999px;padding:.15rem .6rem;font-size:.66rem;backdrop-filter:blur(8px)}
+  .lesson .play{position:absolute;inset:0;display:grid;place-items:center}
+  .lesson .play i{display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--gold);color:#2a1c04;font-size:.9rem;font-style:normal}
+  .lesson .body{padding:1rem}
+  .lesson h3{font-size:.9rem}
+  .lesson p{font-size:.75rem;color:var(--ink-muted);line-height:1.95;margin-top:.4rem}
+
+  .team-sec{background:rgba(243,240,251,.7);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+  .member{overflow:hidden;border-radius:26px;border:1px solid var(--border);background:var(--card);box-shadow:0 1px 2px rgba(20,15,40,.04);transition:.3s}
+  .member:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(20,15,40,.1)}
+  .member img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 35%}
+  .member .body{padding:.9rem}
+  .member h3{font-size:.85rem}
+  .member .role{font-size:.68rem;color:#8a5600;margin-top:.15rem}
+  .member p{font-size:.72rem;color:var(--muted);line-height:1.9;margin-top:.4rem}
+  .bullets{display:grid;gap:.45rem;margin-top:1.1rem;font-size:.82rem;color:var(--muted)}
+  .bullets li{display:flex;align-items:center;gap:.5rem}
+  .bullets li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  .tool{border:1px solid var(--border);border-radius:24px;background:var(--card);padding:1.1rem;display:flex;flex-direction:column;gap:.5rem}
+  .tool .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+  .tool .plat{font-size:.68rem;color:var(--muted)}
+  .tool h3{font-size:.9rem}
+  .tool p{font-size:.78rem;color:var(--muted);flex:1}
+  .tool .price{font-size:.78rem;font-weight:700;color:var(--primary)}
+
+  .feature{border:1px solid var(--border);border-radius:26px;background:var(--card);padding:1.1rem;box-shadow:0 1px 2px rgba(20,15,40,.04)}
+  .feature .ico{display:grid;place-items:center;width:36px;height:36px;border-radius:14px;background:rgba(109,60,232,.1);color:var(--primary);font-size:.9rem}
+  .feature h3{font-size:.88rem;margin-top:.55rem}
+  .feature p{font-size:.78rem;color:var(--muted);line-height:2;margin-top:.25rem}
+  .duo{border:1px solid var(--border);border-radius:26px;padding:1.3rem;display:flex;flex-direction:column;gap:.6rem}
+  .duo.highlight{border-color:rgba(109,60,232,.25);background:rgba(243,240,251,.7)}
+  .duo h2{font-size:1rem}
+  .duo p{font-size:.82rem;color:var(--muted);line-height:2;flex:1}
+  .note{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;border:1px dashed var(--border);border-radius:26px;padding:1rem;font-size:.8rem;color:var(--muted);margin-top:1.1rem}
+  .note a{color:var(--primary);text-decoration:underline}
+
+  .cta{position:relative;overflow:hidden;border-radius:30px;border:1px solid rgba(242,161,27,.25);background:var(--ink);color:var(--ink-fg);padding:2rem 1.4rem;margin-bottom:3rem}
+  .cta .g1{position:absolute;inset:0;background:radial-gradient(circle at 32% 24%,rgba(242,161,27,.3),transparent 62%);opacity:.7}
+  .cta .g2{position:absolute;left:2rem;bottom:-90px;width:16rem;height:16rem;background:radial-gradient(circle,rgba(109,60,232,.36),transparent 62%)}
+  .cta .in{position:relative;display:flex;flex-direction:column;gap:1rem}
+  .cta h2{font-size:1.4rem}
+  .cta p{font-size:.85rem;color:var(--ink-muted);margin-top:.4rem;max-width:32rem;line-height:2}
+  @media(min-width:700px){.cta .in{flex-direction:row;align-items:center;justify-content:space-between;padding:1rem} .cta{padding:2.2rem 2.4rem}}
+
+  footer{background:var(--ink);color:var(--ink-fg)}
+  footer .rule{height:1px;background:linear-gradient(90deg,transparent,rgba(242,161,27,.6),transparent)}
+  footer .cols{display:grid;gap:2rem;padding:2.5rem 0}
+  footer .about{max-width:22rem;font-size:.82rem;color:var(--ink-muted);line-height:2;margin-top:.9rem}
+  footer .meta{display:grid;gap:.4rem;font-size:.72rem;color:var(--ink-muted);margin-top:.9rem}
+  footer h3{font-size:.82rem;margin-bottom:.7rem}
+  footer ul{display:grid;gap:.5rem;font-size:.82rem;color:var(--ink-muted)}
+  footer ul a:hover{color:var(--ink-fg)}
+  footer .bar{border-top:1px solid rgba(247,244,238,.1);font-size:.68rem;color:var(--ink-muted)}
+  footer .bar .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.5rem;padding:.9rem 18px}
+  @media(min-width:700px){footer .cols{grid-template-columns:1fr 1fr}}
+  @media(min-width:1000px){footer .cols{grid-template-columns:1.4fr 1fr 1fr 1fr}}
+
+  .support-btn{position:fixed;bottom:16px;left:16px;z-index:50;display:flex;align-items:center;gap:.5rem;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--gold));color:#fff;padding:6px 6px 6px 16px;box-shadow:0 14px 30px rgba(109,60,232,.35);font-size:.82rem;font-weight:600}
+  .support-btn span.i{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(15,10,31,.25)}
+</style>
+<script>if (window.self !== window.top) window.parent.postMessage({ type: 'SANDBOX_DOCUMENT_START' }, '*');</script><script>
+    (function() {
+        var buffer = window.__base44_preview_native_failures;
+        if (!buffer || buffer.version !== 1 || !Array.isArray(buffer.entries)) {
+            buffer = { version: 1, entries: [], listenersInstalled: false };
+            window.__base44_preview_native_failures = buffer;
+        }
+        if (buffer.listenersInstalled) return;
+        function value(object, key) {
+            return object && typeof object[key] === 'string' ? object[key] : '';
+        }
+        function append(message) {
+            if (!message) return;
+            var normalizedMessage = String(message).slice(0, 5000);
+            for (var index = buffer.entries.length - 1; index >= 0; index--) {
+                var existing = buffer.entries[index];
+                if (existing && existing.level === 'error' && existing.message === normalizedMessage) {
+                    buffer.entries.splice(index, 1);
+                }
+            }
+            buffer.entries.push({
+                level: 'error',
+                message: normalizedMessage,
+                timestamp: Date.now()
+            });
+            if (buffer.entries.length > 100) {
+                buffer.entries.splice(0, buffer.entries.length - 100);
+            }
+        }
+        buffer.append = append;
+        function handleError(event) {
+            var target = event && event.target;
+            var tagName = value(target, 'tagName').toLowerCase() || 'window';
+            var isModule = tagName === 'script' && value(target, 'type').toLowerCase() === 'module';
+            var resourceType = isModule ? 'module' : tagName;
+            var url = value(target, 'src') || value(target, 'href') || value(event, 'filename');
+            var detail = value(event, 'message') || value(event && event.error, 'message');
+            var prefix = tagName === 'window' ? 'Native browser error' : 'Failed to load ' + resourceType;
+            append(prefix + (url ? ' ' + url : '') + (detail ? ': ' + detail : ''));
+        }
+        function rejectionReason(reason) {
+            if (typeof reason === 'string') return reason;
+            var message = value(reason, 'message');
+            if (message) return message;
+            try { return JSON.stringify(reason) || String(reason); }
+            catch (e) { return String(reason); }
+        }
+        function handleRejection(event) {
+            append('Unhandled promise rejection: ' + rejectionReason(event && event.reason));
+        }
+        function handleCspViolation(event) {
+            var blockedUri = value(event, 'blockedURI') || 'resource';
+            var directive = value(event, 'violatedDirective');
+            append('Content Security Policy blocked ' + blockedUri + (directive ? ' (' + directive + ')' : ''));
+        }
+        function overlayText(root, selector) {
+            var element = root && root.querySelector(selector);
+            return value(element, 'textContent').trim();
+        }
+        function captureViteOverlay(overlay) {
+            var root = overlay && overlay.shadowRoot;
+            var message = overlayText(root, '.message-body');
+            if (!message) return;
+            var plugin = overlayText(root, '.plugin');
+            var details = ['Vite build error: ' + (plugin ? plugin + ' ' : '') + message];
+            var file = overlayText(root, '.file');
+            var frame = overlayText(root, '.frame');
+            var stack = overlayText(root, '.stack');
+            if (file) details.push('File: ' + file);
+            if (frame) details.push(frame);
+            if (stack) details.push(stack);
+            append(details.join(String.fromCharCode(10)));
+        }
+        function captureViteOverlays(node) {
+            if (!node || node.nodeType !== 1) return;
+            if (node.matches && node.matches('vite-error-overlay')) captureViteOverlay(node);
+            if (!node.querySelectorAll) return;
+            var overlays = node.querySelectorAll('vite-error-overlay');
+            for (var index = 0; index < overlays.length; index++) captureViteOverlay(overlays[index]);
+        }
+        window.addEventListener('error', handleError, true);
+        window.addEventListener('unhandledrejection', handleRejection);
+        window.addEventListener('securitypolicyviolation', handleCspViolation);
+        if (typeof MutationObserver !== 'undefined' && document.documentElement) {
+            captureViteOverlays(document.documentElement);
+            new MutationObserver(function(records) {
+                for (var recordIndex = 0; recordIndex < records.length; recordIndex++) {
+                    var nodes = records[recordIndex].addedNodes;
+                    for (var nodeIndex = 0; nodeIndex < nodes.length; nodeIndex++) {
+                        captureViteOverlays(nodes[nodeIndex]);
+                    }
+                }
+            }).observe(document.documentElement, { childList: true, subtree: true });
+        }
+        buffer.listenersInstalled = true;
+    })();
+    </script><script data-preview-data-env-pin="true">
+    (function() {
+        var KEY = 'base44_data_env';
+        var APP_API_PATH = "/api/apps/6adf49d6a147060b8ce29fb5/";
+        var STORAGE_KEY = KEY + ':' + APP_API_PATH;
+        var API_ORIGINS = ["https://app.base44.com", "https://base44.app"].map(function(u) { return new URL(u).origin; });
+        var REQUEST_INIT_KEYS = [
+            'method', 'headers', 'credentials', 'mode', 'cache', 'redirect',
+            'referrer', 'referrerPolicy', 'integrity', 'keepalive', 'signal', 'priority',
+        ];
+        var env = new URLSearchParams(window.location.search).get(KEY);
+        try {
+            if (env === 'dev' || env === 'prod') sessionStorage.setItem(STORAGE_KEY, env);
+            else env = sessionStorage.getItem(STORAGE_KEY);
+        } catch (e) {}
+        if (env !== 'dev' && env !== 'prod') return;
+        function pin(url) {
+            try {
+                var u = new URL(url, window.location.href);
+                var sameOrigin = u.origin === window.location.origin;
+                if (!sameOrigin && API_ORIGINS.indexOf(u.origin) === -1) return url;
+                // The app's own server routes and TanStack server functions build
+                // their SDK client from this request, so they need the selection too.
+                var appServerPath = sameOrigin && (
+                    u.pathname.startsWith('/api/') || u.pathname.startsWith('/_serverFn/')
+                );
+                if (!appServerPath && !u.pathname.startsWith(APP_API_PATH)) return url;
+                // Privileged function/agent routes trust this app's Preview host,
+                // not a dev parameter sent to the generic SDK API origin.
+                if (u.origin !== window.location.origin && (
+                    u.pathname.startsWith(APP_API_PATH + 'functions/') ||
+                    u.pathname.startsWith(APP_API_PATH + 'agents/')
+                )) {
+                    u = new URL(u.pathname + u.search + u.hash, window.location.origin);
+                }
+                u.searchParams.set(KEY, env);
+                return u.toString();
+            } catch (e) { return url; }
+        }
+        var origFetch = window.fetch;
+        window.fetch = function(input, init) {
+            if (typeof input === 'string' || input instanceof URL) {
+                return origFetch.call(this, pin(String(input)), init);
+            }
+            if (!input || !input.url) return origFetch.call(this, input, init);
+            var pinned = pin(input.url);
+            if (pinned === input.url) return origFetch.call(this, input, init);
+            try {
+                input = new Request(input, init);
+                if (!input.keepalive || !input.body) {
+                    return origFetch.call(this, new Request(pinned, input));
+                }
+                // RequestInit exposes an existing body as a stream, which Fetch
+                // forbids with keepalive. Buffer only that case, after init overrides.
+                var self = this;
+                return input.blob().then(function(body) {
+                    var rebuilt = { body: body };
+                    REQUEST_INIT_KEYS.forEach(function(key) {
+                        if (input[key] !== undefined) rebuilt[key] = input[key];
+                    });
+                    return origFetch.call(self, new Request(pinned, rebuilt));
+                });
+            } catch (error) { return Promise.reject(error); }
+        };
+        var origOpen = XMLHttpRequest.prototype.open;
+        XMLHttpRequest.prototype.open = function(method, url) {
+            arguments[1] = pin(String(url));
+            return origOpen.apply(this, arguments);
+        };
+    })();
+    </script><script defer data-preview-inject="true" data-parent-origins="https://app.base44.com https://superagent.base44.com" data-app-id="6adf49d6a147060b8ce29fb5" data-preview-type="sandbox" data-rum-app-id="db50c921-10c3-4f12-bccb-950fa174b708" data-rum-client-token="pubfe8a4f2972b412b4556fd67e77f82cb4" data-dd-site="datadoghq.com" src="https://app.base44.com/builder-bridge.js?t=1794241137"></script><script>
+    (function() {
+        var IGNORE = { SCRIPT: 1, STYLE: 1, LINK: 1, META: 1, NOSCRIPT: 1, TEMPLATE: 1 };
+        const fire = () => window.parent.postMessage({ type: 'IFRAME_CONTENT_READY' }, '*');
+        function check() {
+            var body = document.body;
+            if (!body) return false;
+            for (var idx = 0; idx < body.children.length; idx++) {
+                if (!IGNORE[body.children[idx].tagName]) return true;
+            }
+            return false;
+        }
+        function start() {
+            if (check()) { fire(); return; }
+            var observer = new MutationObserver(function() {
+                if (check()) { fire(); observer.disconnect(); }
+            });
+            observer.observe(document.documentElement, { childList: true, subtree: true });
+        }
+        if (document.body) { start(); }
+        else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
+    })();
+    </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        var APP_ID = "6adf49d6a147060b8ce29fb5";
+        var PREVIEW_TYPE = "sandbox";
+        var on404 = false;
+        var booted = false;
+        function detect() { return !!document.querySelector('[data-source-location^="PageNotFound:"]'); }
+        function payload() { return { app_id: APP_ID, preview_type: PREVIEW_TYPE, url_path: window.location.pathname }; }
+        function tick() {
+            var now = detect();
+            if (now && !on404) {
+                on404 = true;
+                window.parent.postMessage({ type: 'PREVIEW_PAGE_NOT_FOUND', payload: payload() }, '*');
+            } else if (!now && (on404 || !booted)) {
+                // On first tick of a fresh document, emit a cleared signal even when
+                // not currently on a 404 — the parent may have latched is404=true from
+                // a previous document at the same URL (e.g. after an iframe reload).
+                on404 = false;
+                window.parent.postMessage({ type: 'PREVIEW_PAGE_NOT_FOUND_CLEARED', payload: payload() }, '*');
+            }
+            booted = true;
+        }
+        function start() {
+            tick();
+            new MutationObserver(tick).observe(document.body, { childList: true, subtree: true });
+        }
+        if (document.body) { start(); }
+        else { document.addEventListener('DOMContentLoaded', start, { once: true }); }
+    })();
+    </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        function fire() { window.parent.postMessage({ type: 'REACT_ROOT_HAS_CHILDREN' }, '*'); }
+        function findRoot() {
+            return document.getElementById('root')
+                || document.getElementById('app')
+                || document.querySelector('[data-react-root]');
+        }
+        // One-shot: wait for DOMContentLoaded (static HTML parsed by then, so the
+        // Base44 convention <div id="root"> is either present or not coming),
+        // observe the root's childList until the first element child appears,
+        // then fire and disconnect. No tree-wide subtree observer.
+        function start() {
+            var root = findRoot();
+            if (!root) return;
+            if (root.childElementCount > 0) { fire(); return; }
+            var obs = new MutationObserver(function() {
+                if (root.childElementCount > 0) { fire(); obs.disconnect(); }
+            });
+            obs.observe(root, { childList: true });
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', start, { once: true });
+        } else { start(); }
+    })();
+    </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        function postUnsupported(reason) {
+            window.parent.postMessage({
+                type: 'IFRAME_FIRST_CONTENTFUL_PAINT_UNSUPPORTED',
+                payload: { reason: reason, userAgent: navigator.userAgent }
+            }, '*');
+        }
+        if (typeof PerformanceObserver === 'undefined') {
+            postUnsupported('no_performance_observer');
+            return;
+        }
+        try {
+            var obs = new PerformanceObserver(function(list) {
+                var entries = list.getEntries();
+                for (var i = 0; i < entries.length; i++) {
+                    if (entries[i].name === 'first-contentful-paint') {
+                        obs.disconnect();
+                        window.parent.postMessage({ type: 'IFRAME_FIRST_CONTENTFUL_PAINT' }, '*');
+                        return;
+                    }
+                }
+            });
+            obs.observe({ type: 'paint', buffered: true });
+        } catch (e) {
+            postUnsupported('observe_threw:' + (e && e.name ? e.name : 'Error'));
+        }
+    })();
+    </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        var APP_ID = "6adf49d6a147060b8ce29fb5";
+        var PREVIEW_TYPE = "sandbox";
+        var DEPS_PATH = '/node_modules/.vite/deps/';
+        var fired = false;
+        function isViteDep(url) {
+            return typeof url === 'string' && url.indexOf(DEPS_PATH) !== -1;
+        }
+        var confirmed = {};
+        function looksFailed(entry) {
+            // HTTP failure status (Chrome 109+).
+            if (entry.responseStatus && entry.responseStatus >= 400) return true;
+            // Aborted / blocked / network-error: request ran, nothing decoded.
+            // decodedBodySize === 0 distinguishes from cache hits (Safari has no
+            // deliveryType, so we can't rely on it to exclude cached responses).
+            return entry.transferSize === 0
+                && entry.decodedBodySize === 0
+                && entry.duration > 0
+                && entry.responseEnd > 0;
+        }
+        // WebKit has no responseStatus and zeroes every size on a cache hit, so the
+        // size heuristic alone flags every cached dep. Re-ask the server instead; a
+        // rejected HEAD proves nothing, WebKit aborts it when the frame navigates away.
+        function confirmThenReport(entry) {
+            if (confirmed[entry.name]) return;
+            confirmed[entry.name] = true;
+            fetch(entry.name, { method: 'HEAD', cache: 'no-store' }).then(function(res) {
+                var type = res.headers.get('content-type') || '';
+                if (res.status >= 400 || type.indexOf('text/html') !== -1) report(entry, res.status);
+            }, function() {});
+        }
+        function report(entry, confirmedStatus) {
+            if (fired) return;
+            fired = true;
+            var nativeBuffer = window.__base44_preview_native_failures;
+            if (nativeBuffer && typeof nativeBuffer.append === 'function') {
+                nativeBuffer.append('Failed to load module ' + entry.name);
+            }
+            window.parent.postMessage({
+                type: 'SANDBOX_VITE_DEPS_404',
+                payload: {
+                    app_id: APP_ID,
+                    preview_type: PREVIEW_TYPE,
+                    url: entry.name,
+                    initiator_type: entry.initiatorType,
+                    response_status: entry.responseStatus || confirmedStatus
+                }
+            }, '*');
+        }
+        new PerformanceObserver(function(list) {
+            if (fired) return;
+            var entries = list.getEntries();
+            for (var i = 0; i < entries.length; i++) {
+                if (isViteDep(entries[i].name) && looksFailed(entries[i])) {
+                    if ('responseStatus' in entries[i]) {
+                        report(entries[i]);
+                        return;
+                    }
+                    confirmThenReport(entries[i]);
+                }
+            }
+        }).observe({ type: 'resource', buffered: true });
+    })();
+    </script><script>
+    (function() {
+        if (typeof PerformanceObserver === 'undefined') return;
+        var reported = {};
+        // Only the app's own module trees may put an error over the preview. A page
+        // can load an optional classic script (analytics, a widget) that fails while
+        // the app renders perfectly well; that must not read as broken app code.
+        // Recording is deliberately wider than reporting — the console buffer keeps
+        // every failed module for diagnostics.
+        function isAppModule(path) {
+            return path.indexOf('/src/') === 0 || path.indexOf('/base44/') === 0;
+        }
+        function modulePath(url) {
+            try {
+                var path = new URL(url, window.location.href).pathname;
+                // The bridge probes this standard SDK path opportunistically;
+                // legacy/custom apps are allowed not to provide it.
+                if (path === '/src/api/base44Client.js') return '';
+                if (path.indexOf('/node_modules/.vite/deps/') !== -1) return '';
+                return /[.](?:[cm]?[jt]sx?)$/i.test(path) ? path : '';
+            } catch (e) {
+                return '';
+            }
+        }
+        new PerformanceObserver(function(list) {
+            var entries = list.getEntries();
+            for (var index = 0; index < entries.length; index++) {
+                var entry = entries[index];
+                if (entry.initiatorType !== 'script') continue;
+                var status = entry.responseStatus;
+                if (!status) continue;
+                var path = modulePath(entry.name);
+                if (!path) continue;
+                if (status < 400) {
+                    // Recovered (an HMR fix re-requests it). Forget it, or breaking the
+                    // same path again later this document would be silently suppressed.
+                    delete reported[path];
+                    continue;
+                }
+                var message = status === 404
+                    ? 'Module not found: ' + path
+                    : 'Module failed to load (' + status + '): ' + path;
+                var buffer = window.__base44_preview_native_failures;
+                if (buffer && typeof buffer.append === 'function') buffer.append(message);
+                if (!isAppModule(path) || reported[path] || window.self === window.top) continue;
+                reported[path] = true;
+                window.parent.postMessage({
+                    type: 'SANDBOX_MODULE_LOAD_FAILED',
+                    payload: { path: path, status: status, message: message }
+                }, '*');
+            }
+        }).observe({ type: 'resource', buffered: true });
+    })();
+    </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        if (typeof performance === 'undefined' || typeof performance.getEntriesByType !== 'function') return;
+        var DEPS_PATH = '/node_modules/.vite/deps/';
+        var QUIESCENCE_MS = 1500;
+        var POLL_MS = 500;
+        var fired = false;
+        var intervalId = setInterval(function() {
+            if (fired) return;
+            var entries = performance.getEntriesByType('resource');
+            var lastDepEnd = 0;
+            for (var i = 0; i < entries.length; i++) {
+                if (entries[i].name.indexOf(DEPS_PATH) === -1) continue;
+                if (entries[i].responseEnd > lastDepEnd) lastDepEnd = entries[i].responseEnd;
+            }
+            if (lastDepEnd === 0) return;
+            if (performance.now() - lastDepEnd >= QUIESCENCE_MS) {
+                fired = true;
+                clearInterval(intervalId);
+                window.parent.postMessage({ type: 'IFRAME_VITE_DEPS_SETTLED' }, '*');
+            }
+        }, POLL_MS);
+    })();
+    </script><script>
+        window.__base44_sdk_attach = import("/src/api/base44Client.js").then(({ base44 }) => {
+            if (base44) {
+                Object.defineProperty(window, "base44_sdk", {
+                    value: base44,
+                    writable: false,
+                    configurable: true
+                });
+            }
+        }).catch((e) => {
+            // Some legacy/custom apps may not have the standard client module.
+            // Leave window.base44_sdk undefined; PreviewLens can fall back to UI/network checks.
+            window.parent.postMessage({ type: "PREVIEW_LENS_SDK_ATTACH_FAILED", error: String(e) }, "*");
+        });
+        </script><script type="module">
+        try {
+            const { createHotContext } = await import("/@vite/client");
+            const hot = createHotContext("/__builder-bridge-hmr");
+            const previewFEVersion = Number(new URLSearchParams(window.location.search).get("previewFE_version")) || 0;
+        
+            let wsOpenedAt = 0;
+            hot.on("vite:ws:connect", () => {
+                wsOpenedAt = Date.now();
+                window.parent.postMessage({ type: "SANDBOX_WS_CONNECT" }, "*");
+            });
+            hot.on("vite:ws:disconnect", () => {
+                let sw = null;
+                try { sw = navigator.serviceWorker; } catch (e) {}  // SecurityError where storage is denied
+                const staleClient = Date.now() - wsOpenedAt < 1000 && !!(sw && sw.controller);
+                window.parent.postMessage({ type: "SANDBOX_WS_DISCONNECT", payload: { stale_client: staleClient } }, "*");
+                if (!staleClient) return;
+                // Vite awaits this before it reloads, so the reload fetches fresh modules.
+                return Promise.race([
+                    Promise.all([
+                        sw.getRegistrations().then((regs) => Promise.all(regs.map((reg) => reg.unregister()))),
+                        caches.keys().then((keys) => Promise.all(keys.map((key) => caches.delete(key)))),
+                    ]),
+                    new Promise((resolve) => setTimeout(resolve, 2000)),
+                ]).catch(() => {});
+            });
+    
+            hot.on("vite:error", (payload) => {
+                const err = payload && payload.err && typeof payload.err === "object" ? payload.err : {};
+                const message = typeof err.message === "string" ? err.message : "Unknown build error";
+                const plugin = typeof err.plugin === "string" ? `[plugin:${err.plugin}] ` : "";
+                const details = [`Vite build error: ${plugin}${message}`];
+                const loc = err.loc && typeof err.loc === "object" ? err.loc : null;
+                let file = loc && typeof loc.file === "string"
+                    ? loc.file
+                    : (typeof err.id === "string" ? err.id : "");
+                if (file) {
+                    file = file.split("?")[0];
+                    if (loc && Number.isFinite(loc.line) && Number.isFinite(loc.column)) {
+                        file += `:${loc.line}:${loc.column}`;
+                    }
+                    details.push(`File: ${file}`);
+                }
+                if (typeof err.frame === "string" && err.frame.trim()) details.push(err.frame.trim());
+                if (typeof err.stack === "string" && err.stack.trim()) details.push(err.stack.trim());
+
+                const nativeBuffer = window.__base44_preview_native_failures;
+                if (!nativeBuffer || typeof nativeBuffer.append !== "function") return;
+                nativeBuffer.append(details.join(String.fromCharCode(10)));
+            });
+    
+            // The pending promise holds Vite's pageReload (it awaits listeners) so the parent swaps a fresh iframe; an editor that doesn't announce previewFE_version falls back to today's in-place reload.
+            hot.on("vite:beforeFullReload", () => {
+                window.parent.postMessage({ type: "sandbox:beforeFullReload" }, "*");
+                if (previewFEVersion > 0) return new Promise(() => {});
+            });
+        } catch (e) {
+            window.parent.postMessage({ type: "SANDBOX_WS_ATTACH_FAILED", error: String(e) }, "*");
+        }
+        </script><script>
+    (function() {
+        if (window.self === window.top) return;
+        var lastUrl = window.location.href;
+        function notify() {
+            var url = window.location.href;
+            if (url === lastUrl) return;
+            lastUrl = url;
+            window.parent.postMessage({ type: 'APP_CHANGED_URL', url: url }, '*');
+        }
+        var origPush = history.pushState.bind(history);
+        history.pushState = function() { origPush.apply(history, arguments); notify(); };
+        var origReplace = history.replaceState.bind(history);
+        history.replaceState = function() { origReplace.apply(history, arguments); notify(); };
+        window.addEventListener('popstate', notify);
+        window.parent.postMessage({ type: 'APP_CHANGED_URL', url: window.location.href }, '*');
+    })();
+    </script></head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="wrap">
+      <p>⏱ پشتیبانی هر روز ۹ تا ۲۱ · پاسخ کمتر از یک روز کاری</p>
+      <div style="display:flex;gap:.8rem">
+        <a href="https://analytic-story-pulse-live.base44.app/goldam">درباره‌ی گلدام</a>
+        <a href="https://analytic-story-pulse-live.base44.app/roadmap">نقشه‌ی راه</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar">
+    <div class="wrap">
+      <a class="brand" href="https://analytic-story-pulse-live.base44.app/">
+        <span class="logo">◆</span>
+        <span><b>گلدام</b><small>ابزار رشد، بازار کار و خدمات</small></span>
+      </a>
+
+      <nav class="main">
+        <a class="active" href="https://analytic-story-pulse-live.base44.app/goldam">گلدام</a>
+        <a href="https://analytic-story-pulse-live.base44.app/services">خدمات</a>
+        <a href="https://analytic-story-pulse-live.base44.app/projects">پروژه‌ها</a>
+        <a href="https://analytic-story-pulse-live.base44.app/freelancers">فریلنسرها</a>
+        <a href="https://analytic-story-pulse-live.base44.app/tools">ابزارها</a>
+        <a href="https://analytic-story-pulse-live.base44.app/support">پشتیبانی</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-gold" href="https://analytic-story-pulse-live.base44.app/post-project">ثبت پروژه</a>
+        <a class="btn btn-outline" href="https://analytic-story-pulse-live.base44.app/login">ورود</a>
+        <button class="burger" type="button" aria-label="منو" onclick="document.getElementById('mm').classList.toggle('open')">☰</button>
+      </div>
+    </div>
+
+    <div class="mobile-menu" id="mm">
+      <div class="grid">
+        <a href="https://analytic-story-pulse-live.base44.app/goldam">درباره گلدام</a>
+        <a href="https://analytic-story-pulse-live.base44.app/services">خدمات و قیمت‌ها</a>
+        <a href="https://analytic-story-pulse-live.base44.app/projects">پروژه‌های باز</a>
+        <a href="https://analytic-story-pulse-live.base44.app/freelancers">فریلنسرها</a>
+        <a href="https://analytic-story-pulse-live.base44.app/tools">فروشگاه ابزار</a>
+        <a href="https://analytic-story-pulse-live.base44.app/join">درخواست همکاری</a>
+        <a href="https://analytic-story-pulse-live.base44.app/roadmap">نقشه‌ی راه</a>
+        <a href="https://analytic-story-pulse-live.base44.app/support">پشتیبانی و تیکت</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="grid-bg"></div>
+  <div class="glow1"></div>
+  <div class="glow2"></div>
+
+  <div class="wrap inner">
+    <div>
+      <span class="eyebrow">✦ استودیوی دیجیتال و بازار کار گلدام</span>
+
+      <h1>
+        برندت را جدی بگیر؛<br />
+        کار را به <span class="grad">تیم درست</span> بسپار.
+      </h1>
+
+      <p class="lead">
+        سایت، اپلیکیشن، برندینگ و سئو را با تیمی اجرا می‌کنیم که مسئول پروژه دارد؛ یا پروژه‌ات را ثبت می‌کنی و از
+        بین پیشنهادهای شفاف فریلنسرهای تأییدشده انتخاب می‌کنی.
+      </p>
+
+      <form class="search" onsubmit="event.preventDefault();var q=document.getElementById('q').value.trim();window.location.href='https://analytic-story-pulse-live.base44.app/projects'+(q?'?q='+encodeURIComponent(q):'');">
+        <span style="padding-inline-start:.7rem;color:var(--ink-muted)">⌕</span>
+        <input id="q" placeholder="دنبال چه مهارتی هستی؟ مثلاً طراحی سایت" aria-label="جست‌وجوی پروژه" />
+        <button class="btn btn-gold" type="submit">جست‌وجو</button>
+      </form>
+
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="https://analytic-story-pulse-live.base44.app/post-project">ثبت پروژه‌ی رایگان ←</a>
+        <a class="btn btn-ghost-light" href="https://analytic-story-pulse-live.base44.app/services">دیدن خدمات و قیمت‌ها</a>
+      </div>
+
+      <dl class="stats">
+        <div><dt>۷</dt><dd>پروژه‌ی باز</dd></div>
+        <div><dt>۶</dt><dd>فریلنسر فعال</dd></div>
+        <div><dt>۱۰</dt><dd>پیشنهاد ثبت‌شده</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero-media">
+      <div class="frame">
+        <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/28190dc7e_generated_image.png" alt="تیم گلدام در حال کار روی پروژه‌ی یک برند" />
+      </div>
+
+      <div class="glass check">✓ <span>تحویل مرحله‌ای با تأیید تو</span></div>
+
+      <div class="glass team">
+        <div class="avatars">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/c9d59d558_generated_image.png" alt="نگار رستمی" />
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/0989e153b_generated_image.png" alt="سحر نیک‌پور" />
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/94e4e09e3_generated_image.png" alt="مهسا کریمی" />
+        </div>
+        <div><b>تیم پشتیبانی گلدام</b><small>هر روز، ۹ تا ۲۱</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap grid">
+    <div class="item"><span class="ico">✓</span><div><b>تحویل با ضمانت</b><p>تا تأیید نهایی تو، تسویه انجام نمی‌شود.</p></div></div>
+    <div class="item"><span class="ico">✓</span><div><b>قیمت شفاف</b><p>قبل از شروع، هزینه و مراحل روی کاغذ می‌آید.</p></div></div>
+    <div class="item"><span class="ico">✓</span><div><b>پاسخ انسانی</b><p>پشتیبانی واقعی، نه ربات و نه پاسخ آماده.</p></div></div>
+    <div class="item"><span class="ico">✓</span><div><b>تیم تأییدشده</b><p>نمونه‌کار و سابقه‌ی هر متخصص بررسی شده است.</p></div></div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow" style="border-color:rgba(109,60,232,.2);background:rgba(109,60,232,.08);color:var(--primary)">خدمات استودیو</span>
+        <h2>هر چیزی که برندت لازم دارد</h2>
+        <p>یک تیم، یک مسئول پروژه و قیمت شفاف. از طراحی سایت تا سئو و محتوا — همه با تحویل مرحله‌ای.</p>
+      </div>
+      <a class="btn btn-outline" href="https://analytic-story-pulse-live.base44.app/services">همه‌ی خدمات ←</a>
+    </div>
+
+    <div class="cards four">
+      <a class="service" href="https://analytic-story-pulse-live.base44.app/services">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/726d8fa91_generated_image.png" alt="طراحی و ساخت سایت" />
+          <div class="shade"></div>
+          <div class="cap"><small>وب‌سایت</small><h3>طراحی و ساخت سایت</h3></div>
+        </div>
+        <div class="foot"><span>از ۱۵٬۰۰۰٬۰۰۰ تومان</span><span>جزئیات ←</span></div>
+      </a>
+
+      <a class="service" href="https://analytic-story-pulse-live.base44.app/services">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/adbf71f01_generated_image.png" alt="اپلیکیشن موبایل" />
+          <div class="shade"></div>
+          <div class="cap"><small>اپلیکیشن</small><h3>اپلیکیشن موبایل</h3></div>
+        </div>
+        <div class="foot"><span>از ۴۵٬۰۰۰٬۰۰۰ تومان</span><span>جزئیات ←</span></div>
+      </a>
+
+      <a class="service" href="https://analytic-story-pulse-live.base44.app/services">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/fe852777f_generated_image.png" alt="لوگو و هویت بصری" />
+          <div class="shade"></div>
+          <div class="cap"><small>هویت بصری</small><h3>لوگو و هویت بصری</h3></div>
+        </div>
+        <div class="foot"><span>از ۸٬۰۰۰٬۰۰۰ تومان</span><span>جزئیات ←</span></div>
+      </a>
+
+      <a class="service" href="https://analytic-story-pulse-live.base44.app/services">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/2fbe87836_generated_image.png" alt="سئو و دیجیتال مارکتینگ" />
+          <div class="shade"></div>
+          <div class="cap"><small>رشد و سئو</small><h3>سئو و دیجیتال مارکتینگ</h3></div>
+        </div>
+        <div class="foot"><span>از ۹٬۰۰۰٬۰۰۰ تومان</span><span>جزئیات ←</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block soft">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kick">بازار کار گلدام</span>
+        <h2>تازه‌ترین پروژه‌ها</h2>
+        <p>پروژه‌های واقعی با بودجه و مهلت مشخص. اگر مهارتش را داری، پیشنهاد بده.</p>
+      </div>
+      <a class="btn btn-outline" href="https://analytic-story-pulse-live.base44.app/projects">همه‌ی پروژه‌ها ←</a>
+    </div>
+
+    <div class="chips">
+      <a href="https://analytic-story-pulse-live.base44.app/projects">طراحی سایت</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">برنامه‌نویسی</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">اپلیکیشن موبایل</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">گرافیک و لوگو</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">تولید محتوا</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">سئو و دیجیتال مارکتینگ</a>
+      <a href="https://analytic-story-pulse-live.base44.app/projects">ترجمه</a>
+    </div>
+
+    <div class="cards three">
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">طراحی سایت</span><span class="time">به‌تازگی</span></div>
+        <h3>ریدیزاین سایت شرکتی و بهبود سرعت</h3>
+        <p>سایت فعلی کند است و در موبایل بد نمایش داده می‌شود. بازطراحی کامل صفحات اصلی، بهینه‌سازی سرعت و پیاده‌سازی نسخه موبایل مدنظر است.</p>
+        <div class="meta"><span>۱۸ تا ۳۰ میلیون تومان</span><span>۲۱ روز</span><span>۲ پیشنهاد</span></div>
+      </a>
+
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">تولید محتوا</span><span class="time">به‌تازگی</span></div>
+        <h3>تولید ۲۰ پست و ۵ ریلز برای اینستاگرام</h3>
+        <p>برای کلینیک زیبایی، ۲۰ پست گرافیکی با متن و ۵ ویدیوی کوتاه نیاز داریم. لحن حرفه‌ای و قابل اعتماد، همراه با تقویم انتشار ماهانه.</p>
+        <div class="meta"><span>۸ تا ۱۵ میلیون تومان</span><span>۲۰ روز</span><span>۱ پیشنهاد</span></div>
+      </a>
+
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">سئو و دیجیتال مارکتینگ</span><span class="time">به‌تازگی</span></div>
+        <h3>کمپین سئو و تولید ۱۰ مقاله تخصصی</h3>
+        <p>آکادمی آموزشی هستیم و می‌خواهیم در نتایج گوگل برای ۲۰ کلمه کلیدی رشد کنیم. تحلیل فنی سایت، تحقیق کلمات کلیدی و تولید ۱۰ مقاله لازم است.</p>
+        <div class="meta"><span>۱۲ تا ۲۰ میلیون تومان</span><span>۴۰ روز</span><span>۱ پیشنهاد</span></div>
+      </a>
+
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">برنامه‌نویسی</span><span class="time">به‌تازگی</span></div>
+        <h3>اتصال درگاه پرداخت و داشبورد فروش</h3>
+        <p>فروشگاه ما روی ووکامرس است. نیاز به اتصال درگاه پرداخت ایرانی، طراحی داشبورد گزارش فروش و پیاده‌سازی کد تخفیف داریم.</p>
+        <div class="meta"><span>۳۰ تا ۵۵ میلیون تومان</span><span>۳۵ روز</span><span>۱ پیشنهاد</span></div>
+      </a>
+
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">گرافیک و لوگو</span><span class="time">به‌تازگی</span></div>
+        <h3>طراحی لوگو و هویت بصری کافه</h3>
+        <p>برای یک کافه تازه‌تأسیس لوگو، رنگ سازمانی، منوی چاپی و طرح تابلو نیاز داریم. سبک مورد علاقه‌مان مینیمال و گرم است.</p>
+        <div class="meta"><span>۶ تا ۱۲ میلیون تومان</span><span>۱۲ روز</span><span>۲ پیشنهاد</span></div>
+      </a>
+
+      <a class="project" href="https://analytic-story-pulse-live.base44.app/projects">
+        <div class="top"><span class="tag">اپلیکیشن موبایل</span><span class="time">به‌تازگی</span></div>
+        <h3>اپلیکیشن اندروید برای پنل مشتریان</h3>
+        <p>می‌خواهیم مشتریانمان از طریق اپ سفارش ثبت کنند و موجودی انبار را ببینند: ورود با شماره موبایل، اتصال به API موجود و اعلان سفارش جدید.</p>
+        <div class="meta"><span>۴۰ تا ۷۰ میلیون تومان</span><span>۴۵ روز</span><span>۱ پیشنهاد</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kick">مسیر کار</span>
+        <h2>از ایده تا تحویل، در چهار قدم</h2>
+        <p>شفاف، بدون تماس بی‌پایان و بدون ابهام در قیمت.</p>
+      </div>
+    </div>
+
+    <div class="cards four">
+      <div class="step"><span class="num">۱</span><h3>پروژه‌ات را بنویس</h3><p>عنوان، توضیح، بودجه و مهلت. کمتر از دو دقیقه.</p></div>
+      <div class="step"><span class="num">۲</span><h3>پیشنهادها را بگیر</h3><p>فریلنسرها مبلغ و زمان پیشنهاد می‌دهند؛ سؤال هم می‌پرسی.</p></div>
+      <div class="step"><span class="num">۳</span><h3>انتخاب و استخدام</h3><p>بهترین پیشنهاد را قبول کن و کار شروع می‌شود.</p></div>
+      <div class="step"><span class="num">۴</span><h3>تحویل و تسویه</h3><p>کار را تحویل بگیر، بعد تسویه کن و امتیاز بده.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="grid-bg"></div>
+  <div class="glow"></div>
+  <div class="wrap inner">
+    <span class="eyebrow">🎓 آکادمی گلدام</span>
+    <h2>آموزش کوتاه، کاربردی، برای همین بازار</h2>
+    <p class="lead">درس‌های کوتاه برای کارفرما و فریلنسر: چطور پروژه بنویسیم، چطور پیشنهاد برنده بدهیم و سایت را برای گوگل آماده کنیم.</p>
+
+    <div class="cards three" style="margin-top:1.6rem">
+      <article class="lesson">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/08cfd7f33_generated_image.png" alt="ثبت اولین پروژه در سه دقیقه" />
+          <div class="shade"></div>
+          <span class="badge">شروع</span>
+          <span class="dur">۴:۲۰</span>
+          <span class="play"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <h3>ثبت اولین پروژه در سه دقیقه</h3>
+          <p>از عنوان پروژه تا بودجه و مهلت؛ چطور بریف بنویسیم که پیشنهاد درست بگیریم.</p>
+        </div>
+      </article>
+
+      <article class="lesson">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/726d8fa91_generated_image.png" alt="بریف درست، پیشنهاد برنده" />
+          <div class="shade"></div>
+          <span class="badge">فریلنسر</span>
+          <span class="dur">۵:۱۰</span>
+          <span class="play"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <h3>بریف درست، پیشنهاد برنده</h3>
+          <p>ساختار یک پیشنهاد که کارفرما را قانع می‌کند: زمان، مراحل و نمونه‌کار مرتبط.</p>
+        </div>
+      </article>
+
+      <article class="lesson">
+        <div class="pic">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/2fbe87836_generated_image.png" alt="سئوی فنی سایت" />
+          <div class="shade"></div>
+          <span class="badge">متوسط</span>
+          <span class="dur">۷:۴۰</span>
+          <span class="play"><i>▶</i></span>
+        </div>
+        <div class="body">
+          <h3>سئوی فنی سایت، بدون اصطلاح پیچیده</h3>
+          <p>سرعت، ساختار لینک و متادیتا؛ کارهایی که در دو هفته اثرشان را می‌بینی.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block team-sec">
+  <div class="wrap">
+    <div style="display:grid;gap:2rem" class="team-grid">
+      <div>
+        <span class="eyebrow" style="border-color:rgba(242,161,27,.45);background:rgba(242,161,27,.14);color:#8a5600">✦ تیم گلدام</span>
+        <h2 style="font-size:1.5rem;margin-top:.7rem">آدم‌های واقعی، پشت هر پروژه</h2>
+        <p style="margin-top:.7rem;font-size:.88rem;color:var(--muted);line-height:2.1">
+          در گلدام هیچ پروژه‌ای بی‌صاحب نمی‌ماند. هر پروژه یک مسئول دارد که از روز اول تا تحویل، پاسخگو است و
+          تیکت‌های پشتیبانی را خود تیم پیگیری می‌کند.
+        </p>
+        <ul class="bullets">
+          <li>پاسخ‌گویی انسانی در بازه‌ی ۹ تا ۲۱</li>
+          <li>جلسه‌ی شروع پروژه و گزارش مرحله‌ای</li>
+          <li>پیگیری پرداخت و تحویل تا آخرین قدم</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.2rem">
+          <a class="btn btn-primary" href="https://analytic-story-pulse-live.base44.app/support">گفت‌وگو با پشتیبانی ←</a>
+          <a class="btn btn-outline" href="https://analytic-story-pulse-live.base44.app/join">پیوستن به تیم</a>
+        </div>
+      </div>
+
+      <div class="cards three">
+        <article class="member">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/c9d59d558_generated_image.png" alt="نگار رستمی" />
+          <div class="body">
+            <h3>نگار رستمی</h3>
+            <p class="role">سرپرست پشتیبانی</p>
+            <p>تیکت‌های فنی و پرداخت را خودش تا بسته‌شدن پیگیری می‌کند.</p>
+          </div>
+        </article>
+        <article class="member">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/0989e153b_generated_image.png" alt="سحر نیک‌پور" />
+          <div class="body">
+            <h3>سحر نیک‌پور</h3>
+            <p class="role">مدیر تجربه‌ی مشتری</p>
+            <p>قبل از شروع کار، مسیر پروژه و تحویل را با تو مشخص می‌کند.</p>
+          </div>
+        </article>
+        <article class="member">
+          <img src="https://media.base44.com/images/public/6adf49d6a147060b8ce29fb5/94e4e09e3_generated_image.png" alt="مهسا کریمی" />
+          <div class="body">
+            <h3>مهسا کریمی</h3>
+            <p class="role">هماهنگ‌کننده‌ی محتوا</p>
+            <p>تقویم محتوای برندت را می‌بندد و تحویل مرحله‌ای را کنترل می‌کند.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block soft">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span style="display:inline-flex;align-items:center;gap:.35rem;border:1px solid var(--border);background:var(--card);border-radius:999px;padding:.2rem .7rem;font-size:.7rem;color:var(--muted)">🛍 گلدام · کارخانه‌ی ابزار</span>
+        <h2 style="font-size:1.2rem;margin-top:.5rem">ابزارهای آماده برای شبکه‌های اجتماعی</h2>
+        <p style="margin-top:.35rem;font-size:.85rem;color:var(--muted)">ابزارها در ۱۲ پلتفرم؛ خرید کامل یا اجاره‌ی ماهانه، بدون برنامه‌نویسی.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem">
+        <a class="btn btn-primary" href="https://analytic-story-pulse-live.base44.app/tools">همه‌ی ابزارها ←</a>
+        <a class="btn btn-outline" href="https://analytic-story-pulse-live.base44.app/roadmap">نقشه‌ی راه</a>
+      </div>
+    </div>
+
+    <div class="cards three">
+      <article class="tool">
+        <div class="row"><span class="tag">طراحی و برندینگ</span><span class="plat">چندپلتفرمی</span></div>
+        <h3>طراح پست و کاور برند</h3>
+        <p>پست و کاور یکدست برند، بدون طراح.</p>
+        <div class="row"><span class="price">فروش ۱٬۶۹۰٬۰۰۰ تومان</span><span class="plat">اجاره ۵۹۰٬۰۰۰ / سی‌روز</span></div>
+      </article>
+
+      <article class="tool">
+        <div class="row"><span class="tag">رشد و تعامل</span><span class="plat">اینستاگرام</span></div>
+        <h3>کمپین UGC و همکاری با اینفلوئنسر</h3>
+        <p>کمپین محتوای کاربرساخته با نتیجه‌ی قابل اندازه‌گیری.</p>
+        <div class="row"><span class="price">فروش ۲٬۹۰۰٬۰۰۰ تومان</span><span class="plat">اجاره ۹۹۰٬۰۰۰ / سی‌روز</span></div>
+      </article>
+
+      <article class="tool">
+        <div class="row"><span class="tag">تولید محتوا</span><span class="plat">تلگرام</span></div>
+        <h3>ربات پاسخ‌گوی فروش</h3>
+        <p>پاسخ خودکار به سؤال پرتکرار مشتری، بدون خاموشی.</p>
+        <div class="row"><span class="price">تحویل فوری</span><span class="plat">اجاره ماهانه</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="kick">چرا گلدام</span>
+        <h2>چیزهایی که کار را مطمئن می‌کند</h2>
+        <p>از انتخاب متخصص تا تسویه‌ی نهایی، هر مرحله قاعده دارد.</p>
+      </div>
+    </div>
+
+    <div class="cards four">
+      <div class="feature"><span class="ico">✓</span><h3>متخصص تأییدشده</h3><p>پروفایل، مهارت و نمونه‌کار هر متخصص را قبل از استخدام ببین.</p></div>
+      <div class="feature"><span class="ico">₮</span><h3>پیشنهاد شفاف</h3><p>هر پیشنهاد با مبلغ، مدت و توضیح می‌آید؛ مقایسه ساده است.</p></div>
+      <div class="feature"><span class="ico">🛡</span><h3>پرداخت مرحله‌ای</h3><p>پول را بر اساس تحویل کار پرداخت کن، نه یک‌جا و بی‌پشتوانه.</p></div>
+      <div class="feature"><span class="ico">🎧</span><h3>پشتیبانی واقعی</h3><p>تیکت بفرست؛ کارشناس انسانی پیگیری می‌کند.</p></div>
+    </div>
+
+    <div class="cards two" style="margin-top:1.2rem">
+      <div class="duo highlight">
+        <span style="font-size:1.1rem">🤝</span>
+        <h2>دنبال کار یا هنرجو هستی؟</h2>
+        <p>درخواست همکاری بفرست: چه متخصص باشی، چه هنرجوی تازه‌کار، مسیر ورود به پروژه‌ها را برایت مشخص می‌کنیم.</p>
+        <a class="btn btn-primary" style="width:fit-content" href="https://analytic-story-pulse-live.base44.app/join">ارسال درخواست همکاری ←</a>
+      </div>
+
+      <div class="duo">
+        <span style="font-size:1.1rem">🎧</span>
+        <h2>پشتیبانی و راهنما</h2>
+        <p>سؤال فنی داری، پرداختی مشکل خورده یا می‌خواهی تخلفی را گزارش کنی؟ تیکت بفرست و پاسخ را در پنل ببین.</p>
+        <a class="btn btn-outline" style="width:fit-content" href="https://analytic-story-pulse-live.base44.app/support">گفت‌وگو با پشتیبانی ←</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <span style="display:flex;align-items:center;gap:.45rem">👥 ۶ فریلنسر تأییدشده و ۷ پروژه‌ی باز در گلدام</span>
+      <a href="https://analytic-story-pulse-live.base44.app/freelancers">دیدن فریلنسرها</a>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="cta">
+    <div class="g1"></div>
+    <div class="g2"></div>
+    <div class="in">
+      <div>
+        <h2>آماده‌ای برندت را یک قدم جلو ببریم؟</h2>
+        <p>پروژه‌ات را ثبت کن یا خدمت مورد نظرت را انتخاب کن؛ در کمتر از یک روز کاری با تو تماس می‌گیریم.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:.6rem">
+        <a class="btn btn-gold" href="https://analytic-story-pulse-live.base44.app/post-project">ثبت پروژه ←</a>
+        <a class="btn btn-ghost-light" href="https://analytic-story-pulse-live.base44.app/services">درخواست مشاوره</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="rule"></div>
+  <div class="wrap cols">
+    <div>
+      <span style="display:flex;align-items:center;gap:.6rem">
+        <span style="display:grid;place-items:center;width:40px;height:40px;border-radius:14px;background:linear-gradient(140deg,var(--gold),var(--primary));color:#2a1c04">◆</span>
+        <b style="font-size:1.2rem">گلدام</b>
+      </span>
+      <p class="about">
+        استودیوی دیجیتال و بازار کار فارسی: طراحی سایت و اپلیکیشن، هویت بصری، محتوا و سئو — با تیمی که مسئول
+        پروژه دارد و پیشنهادهایی که شفاف‌اند.
+      </p>
+      <div class="meta">
+        <span>⏱ پشتیبانی هر روز ۹ تا ۲۱</span>
+        <span>📍 دورکاری از سراسر ایران</span>
+      </div>
+    </div>
+
+    <div>
+      <h3>گلدام</h3>
+      <ul>
+        <li><a href="https://analytic-story-pulse-live.base44.app/goldam">درباره‌ی گلدام</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/services">خدمات استودیو</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/projects">پروژه‌های باز</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/freelancers">فریلنسرها</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/tools">فروشگاه ابزار</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>همکاری</h3>
+      <ul>
+        <li><a href="https://analytic-story-pulse-live.base44.app/join">درخواست همکاری</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/post-project">ثبت پروژه</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/dashboard">پنل کاربری</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h3>پشتیبانی</h3>
+      <ul>
+        <li><a href="https://analytic-story-pulse-live.base44.app/support">پشتیبانی و تیکت</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/roadmap">نقشه‌ی راه</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/panel">پنل ربات</a></li>
+        <li><a href="https://analytic-story-pulse-live.base44.app/lawyer">ربات حقوقی</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="wrap">
+      <span>© گلدام · همه‌ی حقوق محفوظ است.</span>
+      <span>تخصص‌های پرطرفدار: طراحی سایت، اپلیکیشن، برندینگ، محتوا و سئو</span>
+    </div>
+  </div>
+</footer>
+
+<a class="support-btn" href="https://analytic-story-pulse-live.base44.app/support">
+  پشتیبانی
+  <span class="i">🎧</span>
+</a>
+
+<style>
+  @media(min-width:1000px){ .team-grid{grid-template-columns:.9fr 1.1fr;align-items:center} }
+</style>
+</body>
+</html>
